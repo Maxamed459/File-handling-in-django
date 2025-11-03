@@ -1,0 +1,2 @@
+### File handling in django
+this is simple web app built using django it allows the users to upload book images and stores the image to the local filesystem and the path of that image will be stored to the database also the user can delete the image he uploaded, the system deletes from the database and the local filesystem
