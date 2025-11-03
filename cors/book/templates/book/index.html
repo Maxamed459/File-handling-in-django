@@ -1,0 +1,26 @@
+{% extends 'book/layout.html' %}
+{% load widget_tweaks %}
+{% block body %}
+
+<div class="w-full h-screen flex flex-col gap-10 items-center justify-center">
+  <a class="p-2 bg-blue-600 rounded-md text-white" href={% url 'list' %}>View all books</a>
+
+<div class="w-xl rounded-md border border-black/20 shadow-lg p-2">
+
+<form method="POST" class="p-4 w-full" enctype="multipart/form-data" autocomplete="off">
+  {% csrf_token %}
+  <div class="grid gap-2 mb-4">
+    {{ form.name|add_label_class:"block mb-2 text-sm font-medium text-black" }}
+    {% render_field form.name class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg px-4 py-2" %}
+  </div>
+  <div class="grid gap-2 mb-4">
+    {{ form.image|add_label_class:"block mb-2 text-sm font-medium text-black" }}
+    {% render_field form.image class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg px-4 py-2" %}
+  </div>
+  <button class="px-4 py-2 rounded-md w-full bg-blue-600 text-white">
+    Submit
+  </button>
+</form>
+</div>
+</div>
+{% endblock %}

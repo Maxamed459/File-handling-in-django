@@ -1,0 +1,24 @@
+{% extends "book/layout.html" %}
+{% load static %}
+{% block body %}
+<div class="m-4">
+<a class="p-2 bg-blue-600 rounded-md text-white" href={% url 'book' %}>Add a book</a>    
+<div>
+<div class="max-w-6xl mx-auto grid grid-cols-3 gap-4 mt-4">
+{% for book in books %}
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img class="w-full h-90 object-fit" src="{{ book.image.url }}" alt="{{ book.name }}">
+        <div class="px-6 py-4 space-y-3">
+            <div class="font-bold text-xl mb-2">{{ book.name }}</div>
+            <p>Size (bytes): {{ book.image.size }}</p>
+            <p>Width : {{ book.image.width }}</p>
+            <p>Height: {{ book.image.height }}</p>
+            <a class="p-2 bg-red-600 rounded-md text-white" href="{% url 'delete-book' book.pk %}">Delete</a>
+        </div>
+        
+    </div>
+
+{% endfor %}
+</div>
+{% endblock body %}
+
